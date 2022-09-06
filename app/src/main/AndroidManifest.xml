@@ -26,7 +26,7 @@
         <activity android:name=".core.base.ContainerActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
-            android:name=".business.coordinator.CoordinatorActivity"
+            android:name=".business.coordinator.activity.CoordinatorActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

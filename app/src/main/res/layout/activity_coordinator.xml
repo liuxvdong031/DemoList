@@ -6,11 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".business.coordinator.CoordinatorActivity">
+    tools:context=".business.coordinator.activity.CoordinatorActivity">
 
     <Button
         android:id="@+id/btn1"
         android:text="基础的协调员布局使用"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btn2"
+        android:text="常用toolbar+tabLayout+viewPager,悬浮吸顶"
+        android:textAllCaps="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
