@@ -24,6 +24,7 @@ public class SimpleRVAdapter extends RecyclerView.Adapter<SimpleRVAdapter.ViewHo
 
     private final Context context;
     private final ArrayList<DataBean> mDataBeans;
+    private String groupName;
 
     public SimpleRVAdapter(Context context, ArrayList<DataBean> list) {
         this.context = context;
@@ -57,6 +58,29 @@ public class SimpleRVAdapter extends RecyclerView.Adapter<SimpleRVAdapter.ViewHo
             super(itemView);
             textView = itemView.findViewById(R.id.textView);
             imageView = itemView.findViewById(R.id.imageView);
+        }
+    }
+
+    public String getGroupName(int position) {
+        return mDataBeans.get(position).text;
+    }
+
+    /**
+     * 当前position位置的数据是否是组的第一个item
+     * @param position
+     * @return
+     */
+    public boolean isGroupHeader(int position) {
+        if (position == 0) {
+            return true;
+        } else {
+            String currentGroupName = getGroupName(position);
+            String lastGroupName = getGroupName(position - 1);
+            if (currentGroupName.equals(lastGroupName)) {
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 }
