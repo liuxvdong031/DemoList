@@ -23,5 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void toRecycler(View view) {
         startActivity(new Intent(this, RecyclerViewDemoActivity.class));
+
     }
 }
