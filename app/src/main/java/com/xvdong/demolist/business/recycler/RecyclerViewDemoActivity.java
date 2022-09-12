@@ -1,9 +1,5 @@
 package com.xvdong.demolist.business.recycler;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.widget.RelativeLayout;
-
 import com.xvdong.demolist.R;
 import com.xvdong.demolist.business.coordinator.adapter.SimpleRVAdapter;
 import com.xvdong.demolist.core.base.BaseActivity;
@@ -17,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class RecyclerViewDemoActivity extends BaseActivity {
 
     private RecyclerView mRecyclerView;
-    private RelativeLayout mRelativeLayout;
-    private Handler mHandler = new Handler(Looper.getMainLooper());
 
     @Override
     protected int getLayoutId() {
@@ -28,11 +22,6 @@ public class RecyclerViewDemoActivity extends BaseActivity {
     @Override
     protected void initView() {
         mRecyclerView = findViewById(R.id.recycler_view);
-        mRelativeLayout = findViewById(R.id.rl);
-        CustomClockView customClockView = new CustomClockView(this,mHandler);
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(400, 400);
-        customClockView.setLayoutParams(layoutParams);
-        mRelativeLayout.addView(customClockView);
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.xvdong.demolist.business.coordinator.activity.CoordinatorActivity;
 import com.xvdong.demolist.business.recycler.RecyclerViewDemoActivity;
+import com.xvdong.demolist.custom.activity.CustomActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,5 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void toRecycler(View view) {
         startActivity(new Intent(this, RecyclerViewDemoActivity.class));
+    }
+
+    public void toCustom(View view) {
+        startActivity(new Intent(this, CustomActivity.class));
     }
 }

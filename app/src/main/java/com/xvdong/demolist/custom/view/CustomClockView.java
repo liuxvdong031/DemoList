@@ -1,4 +1,4 @@
-package com.xvdong.demolist.business.recycler;
+package com.xvdong.demolist.custom.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -7,9 +7,13 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.os.Handler;
+import android.os.Looper;
+import android.util.AttributeSet;
 import android.view.View;
 
 import java.util.Calendar;
+
+import androidx.annotation.Nullable;
 
 
 /**
@@ -21,11 +25,20 @@ public class CustomClockView extends View implements Runnable {
     private Handler handler;
     int mCenterX, mHourLength, mMinuteLength, mSecondLength;
 
-    public CustomClockView(Context context, Handler handler) {
+    public CustomClockView(Context context) {
         super(context);
+        init();
+    }
+
+    public CustomClockView(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
+
+    private void init(){
+        handler = new Handler(Looper.getMainLooper());
         paint = new Paint(); //设置一个笔刷大小是3的黄色的画笔
         paint.setColor(Color.RED);
-        this.handler = handler;
         handler.postDelayed(this, 1000);
     }
 
@@ -58,7 +71,7 @@ public class CustomClockView extends View implements Runnable {
         //float hOffset, float vOffset// 设置水平位置  vOffset  设置垂直位置
         // 如果hOffset为0 说明开始位置在path.addArc设置的startAngle开始角度
         // 如果vOffset 为0说明经过的位置是在与RectF的顶部相切处
-        canvas.drawTextOnPath("http://blog.csdn.net/u014452224", path, 14, 0, citePaint);
+        canvas.drawTextOnPath("https://blog.csdn.net/liuxvdong031", path, 14, 0, citePaint);
         //为了方便一些转换操作，Canvas 还提供了保存和回滚属性的方法(save和restore)，
         // 比如你可以先保存目前画纸的位置(save)，
         // 然后旋转90度，向下移动100像素后画一些图形，画完后调用restore方法返回到刚才保存的位置
@@ -130,7 +143,7 @@ public class CustomClockView extends View implements Runnable {
     public void run() {
         // 重新绘制View
         this.invalidate();
-        // 重新设置定时器，在60秒后调用run方法
+        // 重新设置定时器，在1秒后调用run方法
         handler.postDelayed(this, 1000);
     }
 }

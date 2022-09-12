@@ -28,7 +28,7 @@ public class MyItemDecoration extends RecyclerView.ItemDecoration {
     public MyItemDecoration() {
         super();
         mHeaderPaint = new Paint();
-        mHeaderPaint.setColor(Color.RED);
+        mHeaderPaint.setColor(Color.GREEN);
         mHeaderPaint.setStrokeWidth(3f);
         mHeaderPaint.setStyle(Paint.Style.FILL);
 
@@ -90,34 +90,38 @@ public class MyItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void onDrawOver(@NonNull Canvas canvas, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.State state) {
         super.onDrawOver(canvas, recyclerView, state);
-        if (recyclerView.getAdapter() instanceof SimpleRVAdapter) {
-            SimpleRVAdapter adapter = (SimpleRVAdapter) recyclerView.getAdapter();
-            //屏幕可视的第一个itemView的位置
-            int firstVisibleItemPosition = ((LinearLayoutManager) recyclerView.getLayoutManager()).findFirstVisibleItemPosition();
-            //获取position对应的view
-            View itemView = recyclerView.findViewHolderForAdapterPosition(firstVisibleItemPosition).itemView;
-            int left = recyclerView.getPaddingLeft();
-            int right = recyclerView.getWidth() - recyclerView.getPaddingRight();
-            int top = recyclerView.getPaddingTop();
-            //当屏幕可视范围内，第二个itemView是下一组的头部的时候
-            boolean isGroupHeader = adapter.isGroupHeader(firstVisibleItemPosition + 1);
-            if (isGroupHeader) {//这种情况就要将上一个吸顶的慢慢往上顶的效果
-                Log.i("BK", "onDrawOver1: " + firstVisibleItemPosition);
-                //bottom会随着上滑越来越小
-                int bottom = Math.min(groupHeaderHeight, itemView.getBottom()-recyclerView.getPaddingTop());
-                canvas.drawRect(left, top, right, top + bottom, mHeaderPaint);
-                String groupName = adapter.getGroupName(firstVisibleItemPosition);
-                mTextPaint.getTextBounds(groupName, 0, groupName.length(), textRect);
-                canvas.drawText(groupName, left + 20, top + bottom - groupHeaderHeight / 2
-                        + textRect.height() / 2, mTextPaint);
-            } else {//固定在顶部的效果
-                Log.i("BK", "onDrawOver2: " + firstVisibleItemPosition);
-                canvas.drawRect(left, top, right, top + groupHeaderHeight, mHeaderPaint);
-                String groupName = adapter.getGroupName(firstVisibleItemPosition);
-                mTextPaint.getTextBounds(groupName, 0, groupName.length(), textRect);
-                canvas.drawText(groupName, left + 20, top + groupHeaderHeight / 2
-                        + textRect.height() / 2, mTextPaint);
+        try {
+            if (recyclerView.getAdapter() instanceof SimpleRVAdapter) {
+                SimpleRVAdapter adapter = (SimpleRVAdapter) recyclerView.getAdapter();
+                //屏幕可视的第一个itemView的位置
+                int firstVisibleItemPosition = ((LinearLayoutManager) recyclerView.getLayoutManager()).findFirstVisibleItemPosition();
+                //获取position对应的view
+                View itemView = recyclerView.findViewHolderForAdapterPosition(firstVisibleItemPosition).itemView;
+                int left = recyclerView.getPaddingLeft();
+                int right = recyclerView.getWidth() - recyclerView.getPaddingRight();
+                int top = recyclerView.getPaddingTop();
+                //当屏幕可视范围内，第二个itemView是下一组的头部的时候
+                boolean isGroupHeader = adapter.isGroupHeader(firstVisibleItemPosition + 1);
+                if (isGroupHeader) {//这种情况就要将上一个吸顶的慢慢往上顶的效果
+                    Log.i("BK", "onDrawOver1: " + firstVisibleItemPosition);
+                    //bottom会随着上滑越来越小
+                    int bottom = Math.min(groupHeaderHeight, itemView.getBottom()-recyclerView.getPaddingTop());
+                    canvas.drawRect(left, top, right, top + bottom, mHeaderPaint);
+                    String groupName = adapter.getGroupName(firstVisibleItemPosition);
+                    mTextPaint.getTextBounds(groupName, 0, groupName.length(), textRect);
+                    canvas.drawText(groupName, left + 20, top + bottom - groupHeaderHeight / 2
+                            + textRect.height() / 2, mTextPaint);
+                } else {//固定在顶部的效果
+                    Log.i("BK", "onDrawOver2: " + firstVisibleItemPosition);
+                    canvas.drawRect(left, top, right, top + groupHeaderHeight, mHeaderPaint);
+                    String groupName = adapter.getGroupName(firstVisibleItemPosition);
+                    mTextPaint.getTextBounds(groupName, 0, groupName.length(), textRect);
+                    canvas.drawText(groupName, left + 20, top + groupHeaderHeight / 2
+                            + textRect.height() / 2, mTextPaint);
+                }
             }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
     }
 

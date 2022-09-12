@@ -21,6 +21,10 @@
             android:text="RecyclerView"
             style="@style/buttonStyle" />
 
+        <Button
+            android:onClick="toCustom"
+            android:text="自定义View"
+            style="@style/buttonStyle" />
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
