@@ -5,24 +5,23 @@
 
     <data>
         <variable
-            name="engine"
-            type="com.xvdong.demolist.core.util.GlideEngine" />
-
-        <variable
             name="viewModel"
-            type="androidx.lifecycle.ViewModel" />
+            type="com.xvdong.demolist.business.jetpack.viewmodel.JetpackViewModel" />
 
+        <import type="com.xvdong.demolist.core.util.GlideEngine"/>
     </data>
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        tools:context=".business.custom.activity.CustomActivity">
+        tools:context=".business.jetpack.JetpackActivity">
 
-        <com.xvdong.demolist.business.custom.view.CustomClockView
-            android:layout_width="match_parent"
+        <ImageView
+            app:url="@{GlideEngine.DEFAULT_IMAGE_URL}"
+            app:isCircle="@{true}"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="200dp"
             android:layout_height="200dp" />
 
     </LinearLayout>

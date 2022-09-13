@@ -25,6 +25,11 @@
             android:onClick="toCustom"
             android:text="自定义View"
             style="@style/buttonStyle" />
+
+        <Button
+            android:onClick="toJetpack"
+            android:text="JetpackDemo"
+            style="@style/buttonStyle" />
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

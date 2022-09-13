@@ -4,6 +4,7 @@ import com.xvdong.demolist.R;
 import com.xvdong.demolist.business.coordinator.adapter.SimpleRVAdapter;
 import com.xvdong.demolist.core.base.BaseActivity;
 import com.xvdong.demolist.core.data.bean.DataBean;
+import com.xvdong.demolist.core.util.GlideEngine;
 
 import java.util.ArrayList;
 
@@ -30,7 +31,7 @@ public class RecyclerViewDemoActivity extends BaseActivity {
         ArrayList<DataBean> dataBeans = new ArrayList<>();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         for (int i = 0; i < 20; i++) {
-            DataBean dataBean = new DataBean("我是" + i, "https://pic.qqtn.com/up/2019-9/15690311636958128.jpg");
+            DataBean dataBean = new DataBean("我是" + i, GlideEngine.DEFAULT_IMAGE_URL);
             dataBeans.add(dataBean);
         }
         SimpleRVAdapter simpleRVAdapter = new SimpleRVAdapter(this, dataBeans);

@@ -1,4 +1,4 @@
-package com.xvdong.demolist.custom.activity;
+package com.xvdong.demolist.business.custom.activity;
 
 import android.os.Bundle;
 

@@ -1,4 +1,4 @@
-package com.xvdong.demolist.custom.view;
+package com.xvdong.demolist.business.custom.view;
 
 import android.content.Context;
 import android.graphics.Canvas;

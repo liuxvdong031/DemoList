@@ -5,8 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.xvdong.demolist.business.coordinator.activity.CoordinatorActivity;
+import com.xvdong.demolist.business.jetpack.JetpackActivity;
 import com.xvdong.demolist.business.recycler.RecyclerViewDemoActivity;
-import com.xvdong.demolist.custom.activity.CustomActivity;
+import com.xvdong.demolist.business.custom.activity.CustomActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,5 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void toCustom(View view) {
         startActivity(new Intent(this, CustomActivity.class));
+    }
+
+    public void toJetpack(View view) {
+        startActivity(new Intent(this, JetpackActivity.class));
     }
 }
