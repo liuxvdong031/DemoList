@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.xvdong.demolist.R;
 import com.xvdong.demolist.business.jetpack.viewmodel.JetpackViewModel;
+import com.xvdong.demolist.databinding.ActivityJetpackBinding;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -12,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 public class JetpackActivity extends AppCompatActivity {
 
     private JetpackViewModel mViewModel;
-    private com.xvdong.demolist.databinding.ActivityJetpackBinding mBinding;
+    private ActivityJetpackBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,8 @@ public class JetpackActivity extends AppCompatActivity {
 
         //Activity跟LifeCycle产生关系的方式
         getLifecycle().addObserver(mBinding.lctv);
+
+        mViewModel.getRepoList();
     }
 
 }
