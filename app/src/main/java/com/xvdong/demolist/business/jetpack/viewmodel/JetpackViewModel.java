@@ -6,6 +6,7 @@ import com.blankj.utilcode.util.LogUtils;
 import com.xvdong.demolist.core.http.ApiService;
 import com.xvdong.demolist.core.http.RetrofitClient;
 
+import androidx.databinding.ObservableField;
 import androidx.lifecycle.ViewModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -15,6 +16,8 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class JetpackViewModel extends ViewModel {
+
+    public ObservableField<String> haha = new ObservableField<>("haha");
 
     @SuppressLint("CheckResult")
     public void getRepoList(){

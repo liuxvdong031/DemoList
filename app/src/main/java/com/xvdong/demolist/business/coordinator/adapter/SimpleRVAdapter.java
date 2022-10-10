@@ -30,10 +30,17 @@ public class SimpleRVAdapter extends RecyclerView.Adapter<SimpleRVAdapter.ViewHo
         this.context = context;
         this.mDataBeans = list;
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.item_simple_rv_adapter, parent, false);
+        View itemView;
+        if (viewType == 1){
+            itemView = LayoutInflater.from(context).inflate(R.layout.item_simple_rv_adapter2, parent, false);
+        }else {
+
+            itemView = LayoutInflater.from(context).inflate(R.layout.item_simple_rv_adapter, parent, false);
+        }
         return new ViewHolder(itemView);
     }
 
@@ -47,6 +54,14 @@ public class SimpleRVAdapter extends RecyclerView.Adapter<SimpleRVAdapter.ViewHo
     @Override
     public int getItemCount() {
         return mDataBeans.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (position > mDataBeans.size() - 2){
+            return 1;
+        }
+        return super.getItemViewType(position);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -67,6 +82,7 @@ public class SimpleRVAdapter extends RecyclerView.Adapter<SimpleRVAdapter.ViewHo
 
     /**
      * 当前position位置的数据是否是组的第一个item
+     *
      * @param position
      * @return
      */

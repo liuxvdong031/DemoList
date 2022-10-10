@@ -18,7 +18,6 @@
             app:expandedTitleMarginBottom="10dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:statusBarScrim="@color/translate"
-            app:title="ToolBar Title"
             app:titleEnabled="true">
 
             <ImageView
@@ -27,15 +26,6 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_launcher_background"
                 app:layout_scrollFlags="scroll|enterAlwaysCollapsed|snap" />
-
-            <androidx.appcompat.widget.Toolbar
-                android:layout_marginTop="20dp"
-                android:id="@+id/tool_bar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:navigationIcon="@mipmap/back"
-                app:layout_collapseMode="pin"
-                app:layout_collapseParallaxMultiplier="0.1" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

@@ -1,17 +1,25 @@
 package com.xvdong.demolist.business.jetpack;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.SizeUtils;
 import com.xvdong.demolist.R;
+import com.xvdong.demolist.business.coordinator.adapter.SimpleRVAdapter;
 import com.xvdong.demolist.business.jetpack.viewmodel.JetpackViewModel;
+import com.xvdong.demolist.core.data.bean.DataBean;
+import com.xvdong.demolist.core.util.GlideEngine;
 import com.xvdong.demolist.databinding.ActivityJetpackBinding;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
@@ -41,6 +49,31 @@ public class JetpackActivity extends AppCompatActivity {
             UserBean userBean = new UserBean(String.valueOf(i), i);
             test(userBean);
         }
+        mBinding.kv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mViewModel.haha.set("wo shi ni ye ye");
+            }
+        });
+
+        mBinding.tvEmoji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBinding.tvEmoji.setText(mBinding.et.getText().toString());
+            }
+        });
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3, LinearLayoutManager.HORIZONTAL, false);
+        mBinding.recyclerView.setLayoutManager(gridLayoutManager);
+        ArrayList<DataBean> dataBeans = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            DataBean dataBean = new DataBean("我是" + i, GlideEngine.DEFAULT_IMAGE_URL);
+            dataBeans.add(dataBean);
+        }
+        PagingScrollHelper pagingScrollHelper = new PagingScrollHelper();
+        pagingScrollHelper.setUpRecycleView(mBinding.recyclerView);
+        pagingScrollHelper.setScrollWidth(SizeUtils.dp2px(300));
+        mBinding.recyclerView.setAdapter(new SimpleRVAdapter(this,dataBeans));
 
     }
 
