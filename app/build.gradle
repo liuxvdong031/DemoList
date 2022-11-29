@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.xvdong.demolist"
-        minSdk 23
+        minSdk 25
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -68,4 +68,6 @@ dependencies {
     implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
     //rxAndroid
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    //闪光布局 通过动画来实现的
+    implementation 'io.supercharge:shimmerlayout:2.1.0'
 }
