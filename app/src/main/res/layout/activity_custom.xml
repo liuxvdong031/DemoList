@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="engine"
             type="com.xvdong.demolist.core.util.GlideEngine" />
@@ -11,6 +12,10 @@
         <variable
             name="viewModel"
             type="androidx.lifecycle.ViewModel" />
+
+        <variable
+            name="bean"
+            type="com.xvdong.demolist.business.custom.activity.CustomActivity.User" />
 
     </data>
 
@@ -24,6 +29,7 @@
         <com.xvdong.demolist.business.custom.view.CustomClockView
             android:layout_width="match_parent"
             android:layout_height="200dp" />
+
         <io.supercharge.shimmerlayout.ShimmerLayout
             android:id="@+id/shimmer_text"
             android:layout_width="match_parent"
@@ -42,8 +48,15 @@
                 android:gravity="center"
                 android:scaleType="centerCrop"
                 android:text="ShimmerLayout"
-                android:textSize="26sp"/>
+                android:textSize="26sp" />
         </io.supercharge.shimmerlayout.ShimmerLayout>
+
+        <TextView
+            android:id="@+id/tv_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{bean.name}"
+            />
 
     </LinearLayout>
 </layout>

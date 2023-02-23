@@ -9,6 +9,10 @@
             type="com.xvdong.demolist.business.jetpack.viewmodel.JetpackViewModel" />
 
         <import type="com.xvdong.demolist.core.util.GlideEngine"/>
+
+        <variable
+            name="userBean"
+            type="com.xvdong.demolist.business.jetpack.JetpackActivity.UserBean" />
     </data>
 
     <LinearLayout
@@ -48,6 +52,11 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+        <include
+            android:id="@+id/included"
+            app:userBean="@{userBean}"
+            layout="@layout/layout_tv"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"

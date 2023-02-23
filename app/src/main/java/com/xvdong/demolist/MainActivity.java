@@ -8,6 +8,7 @@ import com.xvdong.demolist.business.coordinator.activity.CoordinatorActivity;
 import com.xvdong.demolist.business.jetpack.JetpackActivity;
 import com.xvdong.demolist.business.recycler.RecyclerViewDemoActivity;
 import com.xvdong.demolist.business.custom.activity.CustomActivity;
+import com.xvdong.demolist.core.ui.TouchHelperActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,5 +34,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void toJetpack(View view) {
         startActivity(new Intent(this, JetpackActivity.class));
+    }
+
+    public void toCamera(View view){
+        startActivity(new Intent(this, CameraActivity.class));
+    }
+    public void toDrag(View view){
+        startActivity(new Intent(this, TouchHelperActivity.class));
     }
 }

@@ -38,7 +38,6 @@ public class SimpleRVAdapter extends RecyclerView.Adapter<SimpleRVAdapter.ViewHo
         if (viewType == 1){
             itemView = LayoutInflater.from(context).inflate(R.layout.item_simple_rv_adapter2, parent, false);
         }else {
-
             itemView = LayoutInflater.from(context).inflate(R.layout.item_simple_rv_adapter, parent, false);
         }
         return new ViewHolder(itemView);
@@ -58,10 +57,11 @@ public class SimpleRVAdapter extends RecyclerView.Adapter<SimpleRVAdapter.ViewHo
 
     @Override
     public int getItemViewType(int position) {
-        if (position > mDataBeans.size() - 2){
-            return 1;
-        }
-        return super.getItemViewType(position);
+//        if (position > mDataBeans.size() - 2){
+//            return 1;
+//        }
+//        return super.getItemViewType(position);
+        return 1;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

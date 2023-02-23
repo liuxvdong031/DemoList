@@ -30,6 +30,17 @@
             android:onClick="toJetpack"
             android:text="JetpackDemo"
             style="@style/buttonStyle" />
+
+        <Button
+            android:onClick="toCamera"
+            android:text="surfaceView展示相机"
+            style="@style/buttonStyle" />
+
+        <Button
+            android:onClick="toDrag"
+            android:text="可拖拽的recyclerView"
+            style="@style/buttonStyle" />
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.SizeUtils;
 import com.xvdong.demolist.R;
 import com.xvdong.demolist.business.coordinator.adapter.SimpleRVAdapter;
 import com.xvdong.demolist.business.jetpack.viewmodel.JetpackViewModel;
@@ -52,7 +51,7 @@ public class JetpackActivity extends AppCompatActivity {
         mBinding.kv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mViewModel.haha.set("wo shi ni ye ye");
+                mViewModel.haha.set("wo shi ni da ye");
             }
         });
 
@@ -70,11 +69,14 @@ public class JetpackActivity extends AppCompatActivity {
             DataBean dataBean = new DataBean("我是" + i, GlideEngine.DEFAULT_IMAGE_URL);
             dataBeans.add(dataBean);
         }
-        PagingScrollHelper pagingScrollHelper = new PagingScrollHelper();
-        pagingScrollHelper.setUpRecycleView(mBinding.recyclerView);
-        pagingScrollHelper.setScrollWidth(SizeUtils.dp2px(300));
+//        PagingScrollHelper pagingScrollHelper = new PagingScrollHelper();
+//        pagingScrollHelper.setUpRecycleView(mBinding.recyclerView);
+//        pagingScrollHelper.setScrollWidth(SizeUtils.dp2px(300));
         mBinding.recyclerView.setAdapter(new SimpleRVAdapter(this,dataBeans));
 
+        UserBean userBean = new UserBean("111", 1);
+//        mBinding.setUserBean(userBean);
+        mBinding.included.setUserBean(userBean);
     }
 
     public void test (UserBean bean){

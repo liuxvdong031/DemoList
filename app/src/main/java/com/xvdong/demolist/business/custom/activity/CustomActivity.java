@@ -15,5 +15,23 @@ public class CustomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_custom);
         ShimmerLayout shimmerText = findViewById(R.id.shimmer_text);
         shimmerText.startShimmerAnimation();
+        User hahah = new User("hahah");
+
+    }
+
+    public class User{
+        public User(String name) {
+            this.name = name;
+        }
+
+        private String name;
+
+        public String getName() {
+            return name == null ? "" : name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 }
