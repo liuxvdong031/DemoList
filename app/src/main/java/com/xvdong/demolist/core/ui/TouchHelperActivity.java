@@ -64,7 +64,6 @@ public class TouchHelperActivity extends BaseActivity {
             }else {
                 return 0;
             }
-
         }
 
         @Override

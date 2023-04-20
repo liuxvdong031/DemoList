@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">DemoList</string>
+    <string name="tap">D</string>
+
+    <string name="description_info">Info</string>
+
+    <string name="request_permission">This sample needs camera permission.</string>
+
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+
+    <string name="H">H</string>
+
+    <string name="intro_message">这事一个错误提示</string>
 </resources>

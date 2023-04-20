@@ -41,6 +41,27 @@
             android:text="可拖拽的recyclerView"
             style="@style/buttonStyle" />
 
+        <Button
+            android:onClick="startAnim"
+            android:text="开始动画"
+            style="@style/buttonStyle" />
+
+        <Button
+            android:onClick="jiesuo"
+            android:text="解锁"
+            style="@style/buttonStyle" />
+
+        <Button
+            android:onClick="jietua"
+            android:text="截图"
+            style="@style/buttonStyle" />
+
+        <com.xvdong.demolist.NoticeView
+            android:id="@+id/notice_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_weight="1"/>
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
