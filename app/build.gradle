@@ -70,4 +70,5 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     //闪光布局 通过动画来实现的
     implementation 'io.supercharge:shimmerlayout:2.1.0'
+
 }

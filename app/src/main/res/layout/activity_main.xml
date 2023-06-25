@@ -62,6 +62,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
             android:layout_weight="1"/>
+
+
+        <com.xvdong.demolist.temp.MyCanvasView
+            android:id="@+id/canvas"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"/>
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

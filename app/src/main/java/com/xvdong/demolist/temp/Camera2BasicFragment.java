@@ -1503,16 +1503,16 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
         id2 = id2 + 1;
         switch (id2) {
             case 1: {
-                Status.setText("Tap two more times!");
+                Status.setText("再点击两次！");
                 break;
             }
             case 2: {
-                Status.setText("Tap one more time!");
+                Status.setText("再点击一次！");
                 break;
             }
             case 3: {
                 if (Secdeg_to_Int[0] == Secdeg_to_Int[1] && Secdeg_to_Int[0] == Secdeg_to_Int[2]) {
-                    Status.setText("Height is calculated");
+                    Status.setText("计算高度");
                     deg2_Ok = 1;
                     Fixed_Degree2 = (Secdeg_Value[0] + Secdeg_Value[1] + Secdeg_Value[2]) / 3;
                     Result_Degree.setText(String.valueOf(Fixed_Degree2));
@@ -1779,6 +1779,7 @@ public class Camera2BasicFragment extends Fragment implements View.OnClickListen
                     else if (Fixed_Degree2 > 85.6) obj_Height = (float) (obj_Height + 11.4);
                 }
             }
+            Log.d(TAG, "executeHeight: " + obj_Height);
             Result_Height.setText(String.valueOf(obj_Height));
             elevation_Checkbox.setChecked(false);
         }

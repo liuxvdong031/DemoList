@@ -18,6 +18,7 @@ import com.xvdong.demolist.business.jetpack.JetpackActivity;
 import com.xvdong.demolist.business.recycler.RecyclerViewDemoActivity;
 import com.xvdong.demolist.core.ui.TouchHelperActivity;
 import com.xvdong.demolist.temp.CameraActivity;
+import com.xvdong.demolist.temp.MyCanvasView;
 import com.xvdong.demolist.temp.UnlockActivity;
 
 import java.util.ArrayList;
@@ -34,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mImageView = findViewById(R.id.imageView);
+        MyCanvasView view = findViewById(R.id.canvas);
+        float[] numbers = {5f, 3f, 9f, 4.7f, 7.3f};
+        view.setNumbers(numbers);
         init();
     }
 
@@ -73,6 +77,15 @@ public class MainActivity extends AppCompatActivity {
     public void startAnim(View view) {
 
     }
+
+    /**
+     * Helper method to obtain a Parser with registered strike-through &amp; table extensions
+     * &amp; task lists (added in 1.0.1)
+     *
+     * @return a Parser instance that is supported by this library
+     * @since 1.0.0
+     */
+
 
     public void jietu() {
         // 获取ImageView的Bitmap对象
@@ -140,4 +153,6 @@ public class MainActivity extends AppCompatActivity {
     public void jiesuo(View view) {
         startActivity(new Intent(this, UnlockActivity.class));
     }
+
+
 }
