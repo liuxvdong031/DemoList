@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 
 public class MyCanvasView extends View {
     private float[] numbers;
-    private Paint[] paintArray;
     private int centerX, centerY;
     private int radius = 100; // 最内层正五边形的半径
     private int gap = 50; // 每个同心正五边形之间的间距
@@ -33,19 +32,11 @@ public class MyCanvasView extends View {
 
     public void setNumbers(float[] numbers) {
         this.numbers = numbers;
-        paintArray = new Paint[numbers.length];
-        for (int i = 0; i < numbers.length; i++) {
-            paintArray[i] = new Paint();
-            paintArray[i].setColor(Color.BLACK);
-            paintArray[i].setStyle(Paint.Style.FILL);
-            paintArray[i].setAntiAlias(true);
-
-            mPaint = new Paint();
-            mPaint.setColor(Color.BLUE);
-            mPaint.setStrokeWidth(3);
-            mPaint.setStyle(Paint.Style.FILL);
-            mPaint.setAntiAlias(true);
-        }
+        mPaint = new Paint();
+        mPaint.setColor(Color.BLUE);
+        mPaint.setStrokeWidth(3);
+        mPaint.setStyle(Paint.Style.FILL);
+        mPaint.setAntiAlias(true);
         invalidate();
     }
 
@@ -112,7 +103,7 @@ public class MyCanvasView extends View {
     // 在 drawPoints() 方法中修改如下
     private void drawPoints(Canvas canvas) {
         float maxNumber = 10;
-        float minNumber = 1;
+        float minNumber = 0;
 
         for (float number : numbers) {
             if (number > maxNumber) {
