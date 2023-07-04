@@ -92,7 +92,7 @@ public class MyCanvasView extends View {
                         canvas.drawText("住房宝热度", x - 240, y - 20, pointPaint);
                     } else if (j == 3) {
                         canvas.drawText("业主配合度", x + 40, y - 20, pointPaint);
-                    } else if (j == 4) {
+                    } else {
                         canvas.drawText("房源优势", x + 40, y + 20, pointPaint);
                     }
                 }
