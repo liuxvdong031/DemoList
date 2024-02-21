@@ -20,3 +20,4 @@ rootProject.name = "DemoList"
 include ':app'
 include ':whiteboard'
 include ':sandtable'
+include ':qihang'

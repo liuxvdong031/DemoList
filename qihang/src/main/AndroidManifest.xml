@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.DemoList">
+        <activity
+            android:name=".view.ViewPatr3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ViewPatr2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ViewPatr1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart20Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart19Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart18Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart17Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart16Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart15Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart14Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart13Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart12Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart11Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart10Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart9Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart8Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart7Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart6Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart5Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart4Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawPart1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".animation.AnimationPart13Activity"
+            android:exported="false" />
+        <activity
+            android:name=".animation.AnimationPart12Activity"
+            android:exported="false" />
+        <activity
+            android:name=".animation.AnimationPart11Activity"
+            android:exported="false" />
+        <activity
+            android:name=".animation.AnimationPart10Activity"
+            android:exported="false" />
+        <activity
+            android:name=".animation.AnimationPart9Activity"
+            android:exported="false" />
+        <activity
+            android:name=".animation.AnimationPart8Activity"
+            android:exported="false" />
+        <activity
+            android:name=".animation.AnimationPart7Activity"
+            android:exported="false" />
+        <activity
+            android:name=".animation.AnimationPart6Activity"
+            android:exported="false" />
+        <activity
+            android:name=".animation.AnimationPart5Activity"
+            android:exported="false" />
+        <activity
+            android:name=".animation.AnimationPart4Activity"
+            android:exported="false" />
+        <activity
+            android:name=".animation.AnimationPart3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".animation.AnimationPart2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".animation.AnimationPart1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ViewMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".draw.DrawMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".animation.AnimationMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
