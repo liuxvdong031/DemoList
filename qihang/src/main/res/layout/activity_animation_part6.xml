@@ -15,13 +15,9 @@
             android:id="@+id/btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="插值器" />
+            android:text="A-Z动画" />
 
-        <Button
-            android:id="@+id/btn2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="背景色转换动画" />
+
     </LinearLayout>
 
 
