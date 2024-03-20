@@ -6,4 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".draw.DrawPart2Activity">
 
+    <com.example.qihang.draw.view.DrawPart2View
+        android:id="@+id/dp_draw"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

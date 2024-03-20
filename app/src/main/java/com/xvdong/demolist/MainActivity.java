@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mImageView = findViewById(R.id.imageView);
         MyCanvasView view = findViewById(R.id.canvas);
-        float[] numbers = {5f, 3f, 9f, 4.7f, 7.3f};
+        float[] numbers = {0f, 1f, 3f, 5f, 9f};
         view.setNumbers(numbers);
         init();
     }

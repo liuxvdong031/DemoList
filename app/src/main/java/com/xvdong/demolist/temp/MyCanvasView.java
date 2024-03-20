@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 public class MyCanvasView extends View {
     private float[] numbers;
     private int centerX, centerY;
-    private int radius = 100; // 最内层正五边形的半径
+    private int radius = 50; // 最内层正五边形的半径
     private int gap = 50; // 每个同心正五边形之间的间距
     private Paint mPaint;
 
@@ -102,7 +102,7 @@ public class MyCanvasView extends View {
 
     // 在 drawPoints() 方法中修改如下
     private void drawPoints(Canvas canvas) {
-        float maxNumber = 10;
+        float maxNumber = 9;
         float minNumber = 0;
 
         for (float number : numbers) {
@@ -121,7 +121,7 @@ public class MyCanvasView extends View {
             float x = (float) (centerX + (radius + 200 * ((numbers[i] - minNumber) / range)) * Math.cos(angle));
             float y = (float) (centerY - (radius + 200 * ((numbers[i] - minNumber) / range)) * Math.sin(angle));
 
-            canvas.drawCircle(x, y, 15, mPaint);
+            canvas.drawCircle(x, y, 5, mPaint);
             mPaint.setTextSize(40);
             canvas.drawText(String.valueOf(numbers[i]), x, y - 20, mPaint);
             // 绘制连接线段
