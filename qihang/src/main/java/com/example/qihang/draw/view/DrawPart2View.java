@@ -54,6 +54,7 @@ public class DrawPart2View extends View {
         mPaint.setColor(Color.BLUE);  //设置画笔颜色
         mPaint.setStyle(Paint.Style.STROKE);//仅描边
         mPaint.setStrokeWidth(5);//设置画笔宽度
+        mPaint.setStrokeCap(Paint.Cap.ROUND);//圆角线头
 
 
         mPath = new Path();
@@ -82,7 +83,7 @@ public class DrawPart2View extends View {
         mPath2.moveTo(0.2f *1920 , 0.5f * 1200);
         mPath2.lineTo(0.45f * 1920, 0.7f * 1200);
         mPath2.lineTo(0.8f * 1920, 0.3f * 1200);
-        mPath2.close();
+//        mPath2.close();
 
     }
 
@@ -94,7 +95,7 @@ public class DrawPart2View extends View {
 
         mDstPath.reset();
 
-        mDstPath.moveTo(0,0);
+        mDstPath.moveTo(0.2f *1920 , 0.5f * 1200);
         mPathMeasure.getSegment(0, mEndDistance, mDstPath, false);
         canvas.drawPath(mDstPath, mPaint);
 

@@ -22,7 +22,6 @@ import java.util.List;
  */
 public class SketchDataGridAdapter extends BaseAdapter {
 
-
     String TAG = "tangentLu";
 
     public interface OnActionCallback {
@@ -35,7 +34,6 @@ public class SketchDataGridAdapter extends BaseAdapter {
 
     float ratio;
     int itemHeight;
-
 
     List<SketchData> sketchDataList;
 

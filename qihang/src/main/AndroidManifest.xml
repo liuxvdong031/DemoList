@@ -70,7 +70,8 @@
             android:exported="false" />
         <activity
             android:name=".draw.DrawPart3Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".draw.DrawPart2Activity"
             android:exported="false" />

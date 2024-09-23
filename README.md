@@ -10,4 +10,5 @@
   * 能力属性分配图
 * sandtable   图片加标记(沙盘图)
 * whiteboard  白板项目
+* reboot 一键重启
 文档请参考: https://www.yuque.com/dongxv/ofw1xo
