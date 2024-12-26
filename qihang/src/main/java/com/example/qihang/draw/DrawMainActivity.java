@@ -3,9 +3,9 @@ package com.example.qihang.draw;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.qihang.R;
-
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.qihang.R;
 /**
  * 启航的自定义view三部曲之绘制篇
  */
@@ -94,6 +94,11 @@ public class DrawMainActivity extends AppCompatActivity {
         //RadialGradient与水波纹按钮效果
         findViewById(R.id.btn20).setOnClickListener(view -> {
             startActivity(new Intent(this, DrawPart20Activity.class));
+        });
+
+        //动态RDS测试
+        findViewById(R.id.btn21).setOnClickListener(view -> {
+            startActivity(new Intent(this, DrawPart21Activity.class));
         });
     }
 }

@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- 外部存储根目录 -->
-    <external-path name="external_files" path="."/>
+    <external-path
+        name="external_files"
+        path="." />
 
     <!-- 外部存储中的特定子目录 -->
-    <external-path name="external_images" path="Pictures"/>
+    <external-path
+        name="external_images"
+        path="Pictures" />
 
     <!-- 内部存储根目录 -->
-    <internal-path name="internal_files" path="."/>
+    <internal-path
+        name="internal_files"
+        path="." />
 
     <!-- 共享存储根目录 -->
-    <external-files-path name="shared_files" path="."/>
+    <external-files-path
+        name="shared_files"
+        path="." />
 
     <!-- 外部缓存目录 -->
-    <cache-path name="external_cache" path="."/>
+    <cache-path
+        name="external_cache"
+        path="." />
 
     <!-- 内部缓存目录 -->
-    <files-path name="internal_cache" path="cache"/>
+    <files-path
+        name="internal_cache"
+        path="cache" />
 </paths>
