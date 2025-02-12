@@ -2,6 +2,7 @@ package com.xvdong.rebot;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -24,16 +25,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-
+    private int index = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         requestPermission();
 
-        FileUtils.copyAssetToDownload(this, "image1.jpg");
+//        FileUtils.copyAssetToDownload(this, "image1.jpg");
 
         findViewById(R.id.tv_share).setOnClickListener(v -> {
 //            Uri uri = createPDFUri();
@@ -53,7 +55,29 @@ public class MainActivity extends AppCompatActivity {
                 printService();
             }
         });
+        test();
     }
+
+    private void test() {
+        findViewById(R.id.btn1).setOnClickListener(v -> {
+            setLocale("en");
+        });
+
+        findViewById(R.id.btn2).setOnClickListener(v -> {
+            setLocale("zh");
+        });
+    }
+
+
+    public void setLocale(String langCode) {
+        Locale locale = new Locale(langCode);
+        Locale.setDefault(locale);
+        Configuration config = getResources().getConfiguration();
+        config.setLocale(locale);
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+        recreate();
+    }
+
 
     private void printService() {
         // 创建文件对象，指向要分享的文件
