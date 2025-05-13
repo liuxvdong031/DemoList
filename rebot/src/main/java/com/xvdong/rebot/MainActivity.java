@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        FileUtils.copyAssetToDownload(this, "image1.jpg");
 
-        findViewById(R.id.tv_share).setOnClickListener(v -> {
+        findViewById(R.id.iv1).setOnClickListener(v -> {
 //            Uri uri = createPDFUri();
 //            sharePDF(uri);
 
@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
 //            sharePics(imageUris);
 
 
-//            doPhotoPrint();
-            printServices();
+            doPhotoPrint();
+//            printServices();
         });
 
         findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {

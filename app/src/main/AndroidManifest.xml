@@ -17,23 +17,25 @@
         <activity android:name=".temp.CameraActivity"
             android:exported="true">
         </activity>
-        <activity
-            android:name=".TouchHelperActivity"
-            android:exported="false" />
+
         <activity
             android:name=".business.jetpack.JetpackActivity"
             android:exported="false" />
         <activity
             android:name=".business.custom.activity.CustomActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+        <activity android:name=".ScreenBreakpointCheckActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
         </activity>
         <activity
             android:name=".core.base.BaseActivity"
