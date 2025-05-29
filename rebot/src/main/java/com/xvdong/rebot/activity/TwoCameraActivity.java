@@ -1,8 +1,9 @@
-package com.xvdong.rebot;
+package com.xvdong.rebot.activity;
 
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.CameraAccessException;
@@ -26,12 +27,16 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.xvdong.rebot.common.Constants;
+import com.xvdong.rebot.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
  * Created by xvDong on 2025/2/6.
+ * 手机页面同时显示前后两个摄像头的效果,必须支持双摄的手机
  */
 public class TwoCameraActivity extends Activity  {
 
@@ -43,6 +48,12 @@ public class TwoCameraActivity extends Activity  {
     private Handler backgroundHandler;
     private HandlerThread backgroundThread;
     private Size previewSize1, previewSize2;
+
+    public static void start(Context context, Bundle bundle) {
+        Intent starter = new Intent(context, TwoCameraActivity.class);
+        starter.putExtra(Constants.BUNDLE,bundle);
+        context.startActivity(starter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

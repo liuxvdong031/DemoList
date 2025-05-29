@@ -1,4 +1,4 @@
-package com.xvdong.rebot;
+package com.xvdong.rebot.util;
 
 import android.content.Context;
 import android.content.res.AssetManager;
