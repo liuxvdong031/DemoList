@@ -1,25 +1,35 @@
 package com.xvdong.rebot.activity;
 
 import android.Manifest;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.print.PrintDocumentAdapter;
+import android.print.PrintManager;
+import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.print.PrintHelper;
 
-import com.xvdong.rebot.common.Constants;
 import com.xvdong.rebot.R;
+import com.xvdong.rebot.common.Constants;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -34,40 +44,41 @@ import java.util.List;
 
 public class PrintActivity extends AppCompatActivity {
 
+    private static final int REQUEST_STORAGE_PERMISSION = 1;
 
     public static void start(Context context, Bundle bundle) {
         Intent starter = new Intent(context, PrintActivity.class);
-        starter.putExtra(Constants.BUNDLE,bundle);
+        starter.putExtra(Constants.BUNDLE, bundle);
         context.startActivity(starter);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestPermission();
-    }
-
-    private void requestPermission() {
-        ActivityCompat.requestPermissions(this,
-                new String[]{Manifest.permission.READ_MEDIA_IMAGES},
-                1001);
-
+        setContentView(R.layout.activity_print);
+        requestStoragePermission();
+        findViewById(R.id.btn_pic).setOnClickListener(v -> {
+            printPhoto();
+        });
+        findViewById(R.id.btn_pdf).setOnClickListener(v -> {
+            printImagesAsPdf();
+        });
     }
 
     /**
-     *打印一张图片
+     * 打印一张图片
      */
-    private void sharePhoto() {
+    private void printPhoto() {
         PrintHelper photoPrinter = new PrintHelper(this);
         photoPrinter.setScaleMode(PrintHelper.SCALE_MODE_FIT);
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
-                R.drawable.image1);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.image1);
         photoPrinter.printBitmap("droids.jpg - test print", bitmap);
     }
 
 
     /**
      * 打印一组图片,将图片转为pdf后打印
+     *
      * @param uri
      */
     private void sharePDF(Uri uri) {
@@ -82,27 +93,27 @@ public class PrintActivity extends AppCompatActivity {
     public void printImagesAsPdf() {
         ArrayList<Bitmap> bitmaps = new ArrayList<>();
 
-        Bitmap bitmap1 = BitmapFactory.decodeFile("/storage/emulated/0/Download/image1.jpg");
-        Bitmap bitmap2 = BitmapFactory.decodeFile("/storage/emulated/0/Download/image2.jpg");
-        Bitmap bitmap3 = BitmapFactory.decodeFile("/storage/emulated/0/Download/image3.jpg");
-        Bitmap bitmap4 = BitmapFactory.decodeFile("/storage/emulated/0/Download/image4.jpg");
+        Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.image1);
+        Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.image2);
+//        Bitmap bitmap3 = BitmapFactory.decodeResource(getResources(),R.drawable.image3);
+//        Bitmap bitmap4 = BitmapFactory.decodeResource(getResources(),R.drawable.image4);
         bitmaps.add(bitmap1);
         bitmaps.add(bitmap2);
-        bitmaps.add(bitmap3);
-        bitmaps.add(bitmap4);
+//        bitmaps.add(bitmap3);
+//        bitmaps.add(bitmap4);
         try {
-            // 将图片转换为 PDF 文件
+            // 创建 PDF 文件
             File pdfFile = convertImagesToPdf(bitmaps);
-            // 获取 PDF 文件的 Uri
+            // 获取 PDF 文件的 Uri（使用 FileProvider）
             Uri pdfUri = FileProvider.getUriForFile(this, "com.xvdong.rebot.provider", pdfFile);
-            // 创建打印意图
-            Intent printIntent = new Intent(Intent.ACTION_SEND);
-            printIntent.setType("application/pdf");
-            printIntent.putExtra(Intent.EXTRA_STREAM, pdfUri);
-            // 授予临时权限
-            printIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            // 启动打印
-            startActivity(printIntent);
+            // 获取打印管理器
+            PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
+            // 创建打印适配器
+            PrintDocumentAdapter printAdapter = new PdfDocumentAdapter(this, pdfUri);
+            // 设置打印任务名称
+            String jobName = getString(R.string.app_name) + " Document";
+            // 启动打印任务
+            printManager.print(jobName, printAdapter, null);
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("PDFPrinting", "Error creating or printing PDF", e);
@@ -153,21 +164,69 @@ public class PrintActivity extends AppCompatActivity {
                 scaledBitmap.recycle();
             }
         }
-
-        // 保存 PDF 文件
-        File pdfFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "images.pdf");
-        try (FileOutputStream fileOutputStream = new FileOutputStream(pdfFile)) {
-            pdfDocument.writeTo(fileOutputStream);
+        // 使用安全的文件保存方式
+        File pdfFile = getOutputPdfFile();
+        try (FileOutputStream fos = new FileOutputStream(pdfFile)) {
+            pdfDocument.writeTo(fos);
         } finally {
             pdfDocument.close();
         }
-
         return pdfFile;
     }
 
-    private Uri createPDFUri() {
-        File imagePath = new File("/storage/emulated/0/Android/data/com.xvdong.rebot/files/test.pdf");
-        Uri uri = FileProvider.getUriForFile(this, "com.xvdong.rebot.provider", imagePath);
-        return uri;
+    private File getOutputPdfFile()throws IOException {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            // Android 10+ 使用 MediaStore
+            ContentResolver resolver = getContentResolver();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "images.pdf");
+            contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "application/pdf");
+            contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
+
+            Uri uri = resolver.insert(MediaStore.Files.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY), contentValues);
+            if (uri == null) {
+                throw new IOException("Failed to create PDF file");
+            }
+            return new File(getPathFromUri(uri));
+        } else {
+            // Android 9- 使用传统方式
+            File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+            if (!downloadsDir.exists()) downloadsDir.mkdirs();
+            return new File(downloadsDir, "images.pdf");
+        }
     }
+
+    // URI 转实际路径的辅助方法
+    private String getPathFromUri(Uri uri) {
+        try (Cursor cursor = getContentResolver().query(uri, null, null, null, null)) {
+            if (cursor != null && cursor.moveToFirst()) {
+                int index = cursor.getColumnIndex(MediaStore.Files.FileColumns.DATA);
+                return cursor.getString(index);
+            }
+        }
+        return uri.getPath(); // 备用方案
+    }
+
+
+    private void requestStoragePermission() {
+        // Android 11+ 使用 MANAGE_EXTERNAL_STORAGE
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (!Environment.isExternalStorageManager()) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                intent.setData(Uri.parse("package:" + getPackageName()));
+                startActivityForResult(intent, REQUEST_STORAGE_PERMISSION);
+            }
+        } else {// Android 6.0-10 使用传统权限请求
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                        this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        REQUEST_STORAGE_PERMISSION
+                );
+            }
+        }
+    }
+
+
 }

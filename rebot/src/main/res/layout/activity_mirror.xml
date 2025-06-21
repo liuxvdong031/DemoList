@@ -13,12 +13,11 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:layout_width="800px"
+            android:layout_width="780px"
             android:layout_height="match_parent">
-
             <TextView
                 android:id="@+id/tv1"
-                android:layout_width="780px"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="哈哈哈哈"
