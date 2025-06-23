@@ -95,14 +95,14 @@ public class PrintActivity extends AppCompatActivity {
 
         Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.image1);
         Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.image2);
-//        Bitmap bitmap3 = BitmapFactory.decodeResource(getResources(),R.drawable.image3);
-//        Bitmap bitmap4 = BitmapFactory.decodeResource(getResources(),R.drawable.image4);
+        Bitmap bitmap3 = BitmapFactory.decodeResource(getResources(),R.drawable.image3);
+        Bitmap bitmap4 = BitmapFactory.decodeResource(getResources(),R.drawable.image4);
         bitmaps.add(bitmap1);
         bitmaps.add(bitmap2);
-//        bitmaps.add(bitmap3);
-//        bitmaps.add(bitmap4);
+        bitmaps.add(bitmap3);
+        bitmaps.add(bitmap4);
         try {
-            // 创建 PDF 文件
+            // 创建 PDF 文件  这里可以异步处理
             File pdfFile = convertImagesToPdf(bitmaps);
             // 获取 PDF 文件的 Uri（使用 FileProvider）
             Uri pdfUri = FileProvider.getUriForFile(this, "com.xvdong.rebot.provider", pdfFile);
@@ -115,7 +115,6 @@ public class PrintActivity extends AppCompatActivity {
             // 启动打印任务
             printManager.print(jobName, printAdapter, null);
         } catch (Exception e) {
-            e.printStackTrace();
             Log.e("PDFPrinting", "Error creating or printing PDF", e);
         }
     }
