@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.xvdong.rebot.activity.DualScreenActivity;
 import com.xvdong.rebot.activity.MirrorActivity;
 import com.xvdong.rebot.activity.PrintActivity;
 import com.xvdong.rebot.activity.TwoCameraActivity;
@@ -31,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_video).setOnClickListener(v -> {
             VideoMirrorActivity.start(this,null);
         });
+
+        findViewById(R.id.btn_ping).setOnClickListener(v -> {
+            DualScreenActivity.start(this,null);
+        });
+
 
     }
 }

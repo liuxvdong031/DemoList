@@ -28,7 +28,13 @@
 
     <Button
         android:id="@+id/btn_video"
-        android:text="左右视频"
+        android:text="视频"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_ping"
+        android:text="双屏异显"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>
