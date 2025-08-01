@@ -48,6 +48,8 @@
             android:exported="false"
             android:screenOrientation="landscape" />
 
+        <activity android:name=".activity.ColorActivity"
+            android:exported="false"/>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.xvdong.rebot.provider"

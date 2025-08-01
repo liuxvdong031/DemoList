@@ -8,6 +8,8 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
+
     <Button
         android:id="@+id/btn_print"
         android:text="系统打印服务"
@@ -35,6 +37,12 @@
     <Button
         android:id="@+id/btn_ping"
         android:text="双屏异显"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_color"
+        android:text="颜色选择"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>
